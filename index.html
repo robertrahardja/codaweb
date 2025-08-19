@@ -2,624 +2,654 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coda - Accelerate Growth with Payment Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1.5rem 0;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: #00ff88;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-primary {
-            background: #00ff88;
-            color: #000;
-        }
-
-        /* Hero Section with Canvas */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at center, #001a0d 0%, #000 70%);
-        }
-
-        .canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        #animatedCanvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 1000px;
-            padding: 0 2rem;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        /* Product Cards Section */
-        .products-section {
-            padding: 100px 0;
-            background: #000;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .products-carousel {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .product-cards-container {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 2rem 0;
-        }
-
-        .product-card {
-            flex: 0 0 400px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            scroll-snap-align: start;
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-card.green {
-            background: linear-gradient(135deg, #00ff8810 0%, #00ff8830 100%);
-            border: 1px solid #00ff8850;
-        }
-
-        .product-card.blue {
-            background: linear-gradient(135deg, #0088ff10 0%, #0088ff30 100%);
-            border: 1px solid #0088ff50;
-        }
-
-        .product-card.pink {
-            background: linear-gradient(135deg, #ff008810 0%, #ff008830 100%);
-            border: 1px solid #ff008850;
-        }
-
-        .product-card.purple {
-            background: linear-gradient(135deg, #8800ff10 0%, #8800ff30 100%);
-            border: 1px solid #8800ff50;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #333 0%, #444 100%);
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .product-description {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-link {
-            color: #00ff88;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Tab Navigation */
-        .tab-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .tab-btn {
-            padding: 0.75rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            background: #00ff88;
-            color: #000;
-            border-color: #00ff88;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            padding: 100px 0;
-            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00ff88 0%, #0088ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 80px 0 40px;
-            background: #000;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-        }
-
-        .footer-column h4 {
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem 0;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #00ff88;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Wealth Express - Bridging traditional finance and digital assets with institutional-grade investment solutions">
+    <meta name="theme-color" content="#141B4D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Wealth Express - Digital Assets & Investment Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">CODA</div>
+            <div class="logo">Wealth Express</div>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Desktop Menu -->
             <ul class="nav-menu">
-                <li><a href="#" class="nav-link">Products</a></li>
-                <li><a href="#" class="nav-link">Solutions</a></li>
-                <li><a href="#" class="nav-link">Knowledge Center</a></li>
-                <li><a href="#" class="nav-link">Company</a></li>
+                <li><a href="#about" class="nav-link" data-en="About Us" data-zh="关于我们">About Us</a></li>
+                <li><a href="#digital-assets" class="nav-link" data-en="Digital Assets" data-zh="数字资产">Digital Assets</a></li>
+                <li><a href="#investment" class="nav-link" data-en="Investment" data-zh="投资方案">Investment</a></li>
+                <li><a href="#bespoke" class="nav-link" data-en="Bespoke" data-zh="定制方案">Bespoke</a></li>
+                <li><a href="#clients" class="nav-link" data-en="Clients" data-zh="客户">Clients</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-zh="联系">Contact</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="btn btn-outline">Contact us</button>
-                <button class="btn btn-primary">Get Started</button>
+            
+            <!-- Desktop Actions -->
+            <div class="nav-actions desktop-only">
+                <button class="lang-switcher" onclick="toggleLanguage()">
+                    <span class="lang-en">中文</span>
+                    <span class="lang-zh" style="display:none;">English</span>
+                </button>
+                <button class="btn btn-primary" data-en="Get Started" data-zh="开始">Get Started</button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" onclick="if(event.target === this) toggleMobileMenu()">
+            <div class="mobile-menu-content">
+                <button class="close-menu" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+                <ul class="mobile-nav-menu">
+                    <li><a href="#about" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">About Us</span>
+                        <span class="lang-zh" style="display:none;">关于我们</span>
+                    </a></li>
+                    <li><a href="#digital-assets" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Digital Assets</span>
+                        <span class="lang-zh" style="display:none;">数字资产</span>
+                    </a></li>
+                    <li><a href="#investment" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Investment</span>
+                        <span class="lang-zh" style="display:none;">投资方案</span>
+                    </a></li>
+                    <li><a href="#bespoke" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Bespoke</span>
+                        <span class="lang-zh" style="display:none;">定制方案</span>
+                    </a></li>
+                    <li><a href="#clients" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Clients</span>
+                        <span class="lang-zh" style="display:none;">客户</span>
+                    </a></li>
+                    <li><a href="#contact" class="mobile-nav-link" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Contact</span>
+                        <span class="lang-zh" style="display:none;">联系</span>
+                    </a></li>
+                </ul>
+                <div class="mobile-menu-actions">
+                    <button class="lang-switcher mobile" onclick="toggleLanguage()">
+                        <span class="lang-en">中文</span>
+                        <span class="lang-zh" style="display:none;">English</span>
+                    </button>
+                    <button class="btn btn-primary mobile-cta" onclick="toggleMobileMenu()">
+                        <span class="lang-en">Get Started</span>
+                        <span class="lang-zh" style="display:none;">开始</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section with Animated Canvas -->
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="canvas-container">
-            <canvas id="animatedCanvas"></canvas>
-        </div>
         <div class="hero-content">
-            <h1 class="hero-title">Accelerate Growth with Coda's Payment Solutions</h1>
-            <p class="hero-subtitle">One solution. Endless earning potential.</p>
-            <div class="hero-actions">
-                <button class="btn btn-primary">Get Started</button>
-                <button class="btn btn-outline">Learn More</button>
+            <h1 class="hero-title">
+                <span class="lang-en">Bridging Traditional Finance and Digital Assets</span>
+                <span class="lang-zh" style="display:none;">连接传统金融与数字资产</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="lang-en">Institutional-grade investment solutions for today's visionary investors</span>
+                <span class="lang-zh" style="display:none;">为今天的远见投资者提供机构级投资解决方案</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">About Us</span>
+                    <span class="lang-zh" style="display:none;">关于我们</span>
+                </h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        <span class="lang-en">Wealth Express spun off from China's largest securities firm in 2015 and has evolved into a diversified capital group spanning digital assets, private wealth management, systematic investing, private equity, and distressed credit. Our mission is to bridge the worlds of traditional finance and digital tokens for today's visionary investors.</span>
+                        <span class="lang-zh" style="display:none;">财富快线于2015年从中国最大的证券公司分拆出来，已发展成为一个多元化的资本集团，涵盖数字资产、私人财富管理、系统化投资、私募股权和困境信贷。我们的使命是为今天的远见投资者架起传统金融和数字代币世界的桥梁。</span>
+                    </p>
+                </div>
+
+                <!-- Philosophy Cards -->
+                <div class="philosophy-section">
+                    <h3 class="subsection-title">
+                        <span class="lang-en">Our Philosophy</span>
+                        <span class="lang-zh" style="display:none;">我们的理念</span>
+                    </h3>
+                    <div class="philosophy-cards">
+                        <div class="philosophy-card">
+                            <div class="philosophy-icon">💰</div>
+                            <p>
+                                <span class="lang-en">Wealth preservation & intergenerational growth</span>
+                                <span class="lang-zh" style="display:none;">财富保值与代际增长</span>
+                            </p>
+                        </div>
+                        <div class="philosophy-card">
+                            <div class="philosophy-icon">📈</div>
+                            <p>
+                                <span class="lang-en">Embrace market cycles with caution & conviction</span>
+                                <span class="lang-zh" style="display:none;">谨慎而坚定地拥抱市场周期</span>
+                            </p>
+                        </div>
+                        <div class="philosophy-card">
+                            <div class="philosophy-icon">🌍</div>
+                            <p>
+                                <span class="lang-en">Wealth preservation & intergenerational growth</span>
+                                <span class="lang-zh" style="display:none;">财富保值与代际增长</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="leadership-section">
+                    <h3 class="subsection-title">
+                        <span class="lang-en">Leadership</span>
+                        <span class="lang-zh" style="display:none;">领导团队</span>
+                    </h3>
+                    <div class="leadership-grid">
+                        <div class="leader-card">
+                            <div class="leader-image"></div>
+                            <h4>William Chan</h4>
+                            <p>
+                                <span class="lang-en">Chairman & Risk Committee Chair</span>
+                                <span class="lang-zh" style="display:none;">主席兼风险委员会主席</span>
+                            </p>
+                        </div>
+                        <div class="leader-card">
+                            <div class="leader-image"></div>
+                            <h4>Teresa Yang</h4>
+                            <p>
+                                <span class="lang-en">Deputy CEO</span>
+                                <span class="lang-zh" style="display:none;">副首席执行官</span>
+                            </p>
+                        </div>
+                        <div class="leader-card">
+                            <div class="leader-image"></div>
+                            <h4>Li Pan</h4>
+                            <p>
+                                <span class="lang-en">Chief Investment Officer</span>
+                                <span class="lang-zh" style="display:none;">首席投资官</span>
+                            </p>
+                        </div>
+                        <div class="leader-card">
+                            <div class="leader-image"></div>
+                            <h4>Michael Chen</h4>
+                            <p>
+                                <span class="lang-en">Chief Technology Officer</span>
+                                <span class="lang-zh" style="display:none;">首席技术官</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section">
-        <div class="section-header">
-            <h2 class="section-title">Our Products</h2>
-        </div>
-        <div class="products-carousel">
-            <div class="product-cards-container">
-                <div class="product-card green">
-                    <div class="product-image"></div>
-                    <h3 class="product-title">Coda Custom Commerce</h3>
-                    <p class="product-description">A 100% customizable web store to sell your content your way.</p>
-                    <a href="#" class="product-link">Learn more →</a>
-                </div>
-                <div class="product-card blue">
-                    <div class="product-image"></div>
-                    <h3 class="product-title">Codapay</h3>
-                    <p class="product-description">Plug into our network of over 400 payment methods worldwide.</p>
-                    <a href="#" class="product-link">Learn more →</a>
-                </div>
-                <div class="product-card pink">
-                    <div class="product-image"></div>
-                    <h3 class="product-title">Coda Distribution</h3>
-                    <p class="product-description">Expand your content reach across global markets.</p>
-                    <a href="#" class="product-link">Learn more →</a>
-                </div>
-                <div class="product-card purple">
-                    <div class="product-image"></div>
-                    <h3 class="product-title">Codashop</h3>
-                    <p class="product-description">Global marketplace for digital content with millions of users.</p>
-                    <a href="#" class="product-link">Learn more →</a>
-                </div>
+    <!-- Digital Assets Solution Section -->
+    <section id="digital-assets" class="section digital-assets-section dark-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">Digital Assets Solution</span>
+                    <span class="lang-zh" style="display:none;">数字资产解决方案</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Seamless, fully-regulated conversion between tokens and fiat, powered by institutional-grade custody and clearing.</span>
+                    <span class="lang-zh" style="display:none;">在机构级托管和清算的支持下，在代币和法币之间进行无缝、完全监管的转换。</span>
+                </p>
             </div>
-            <div class="tab-navigation">
-                <button class="tab-btn active">Custom Commerce</button>
-                <button class="tab-btn">Codapay</button>
-                <button class="tab-btn">Distribution</button>
-                <button class="tab-btn">Codashop</button>
+
+            <!-- Flow Diagram -->
+            <div class="flow-diagram">
+                <svg viewBox="0 0 800 400" class="crypto-flow-svg">
+                    <!-- Background -->
+                    <rect x="10" y="10" width="780" height="380" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="2" rx="10"/>
+                    
+                    <!-- Client Box -->
+                    <rect x="50" y="180" width="100" height="40" fill="#4a7c7e" rx="5"/>
+                    <text x="100" y="205" text-anchor="middle" fill="white" font-size="14" font-weight="600">Client</text>
+                    
+                    <!-- Crypto Custody Circle -->
+                    <circle cx="300" cy="200" r="60" fill="#d4af36" opacity="0.2" stroke="#d4af36" stroke-width="2"/>
+                    <text x="300" y="195" text-anchor="middle" fill="#1a1a2e" font-size="14" font-weight="600">Crypto</text>
+                    <text x="300" y="210" text-anchor="middle" fill="#1a1a2e" font-size="14" font-weight="600">Custody</text>
+                    
+                    <!-- Exchange Boxes -->
+                    <rect x="220" y="50" width="100" height="35" fill="#6b8e23" rx="5"/>
+                    <text x="270" y="72" text-anchor="middle" fill="white" font-size="12">Exchange</text>
+                    
+                    <rect x="220" y="315" width="100" height="35" fill="#6b8e23" rx="5"/>
+                    <text x="270" y="337" text-anchor="middle" fill="white" font-size="12">Exchange</text>
+                    
+                    <!-- Banks/Crypto Box -->
+                    <rect x="480" y="170" width="120" height="60" fill="#ff6b6b" opacity="0.2" stroke="#ff6b6b" stroke-width="2" rx="5"/>
+                    <text x="540" y="195" text-anchor="middle" fill="#1a1a2e" font-size="12" font-weight="600">Banks</text>
+                    <text x="540" y="210" text-anchor="middle" fill="#666" font-size="10">(HSBC, DBS, etc)</text>
+                    
+                    <!-- Client Bank Box -->
+                    <rect x="650" y="180" width="100" height="40" fill="#4a7c7e" rx="5"/>
+                    <text x="700" y="205" text-anchor="middle" fill="white" font-size="14" font-weight="600">Client Bank</text>
+                    
+                    <!-- Arrows -->
+                    <!-- Client to Crypto -->
+                    <path d="M 150 200 L 240 200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="195" y="195" text-anchor="middle" fill="#666" font-size="10">USDT</text>
+                    
+                    <!-- Crypto to Exchanges -->
+                    <path d="M 280 150 L 260 85" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="250" y="120" text-anchor="middle" fill="#666" font-size="10">USDT</text>
+                    
+                    <path d="M 280 250 L 260 315" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="250" y="285" text-anchor="middle" fill="#666" font-size="10">USDT</text>
+                    
+                    <!-- Exchanges to Banks -->
+                    <path d="M 320 68 L 480 180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="400" y="120" text-anchor="middle" fill="#666" font-size="10">USD</text>
+                    
+                    <path d="M 320 332 L 480 220" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="400" y="280" text-anchor="middle" fill="#666" font-size="10">USD</text>
+                    
+                    <!-- Crypto to Banks direct -->
+                    <path d="M 360 200 L 480 200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="420" y="195" text-anchor="middle" fill="#666" font-size="10">USD</text>
+                    
+                    <!-- Banks to Client Bank -->
+                    <path d="M 600 200 L 650 200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="625" y="195" text-anchor="middle" fill="#666" font-size="10">USD</text>
+                    
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Partnership Logos -->
+            <div class="partnerships">
+                <div class="partnership-stat">
+                    <span class="stat-icon">🏦</span>
+                    <p>
+                        <span class="lang-en">Cooperated with: more than 200 exchanges, more than 10 banks</span>
+                        <span class="lang-zh" style="display:none;">合作伙伴：超过200家交易所，超过10家银行</span>
+                    </p>
+                </div>
+                <div class="partner-logos">
+                    <div class="partner-logo">HSBC HK</div>
+                    <div class="partner-logo">DBS</div>
+                    <div class="partner-logo">Bank of China</div>
+                    <div class="partner-logo">China Merchants</div>
+                    <div class="partner-logo">CITIC Bank</div>
+                    <div class="partner-logo">May Bank</div>
+                    <div class="partner-logo">Standard Chartered</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">400+</div>
-                <div class="stat-label">Payment Methods</div>
+    <!-- Investment Solutions Section -->
+    <section id="investment" class="section investment-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">Investment Solutions</span>
+                    <span class="lang-zh" style="display:none;">投资解决方案</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">20+ Years of Institutional Investing Experience</span>
+                    <span class="lang-zh" style="display:none;">20多年的机构投资经验</span>
+                </p>
+                <p class="section-description">
+                    <span class="lang-en">We focus on our key strengths and continue to work on the areas where we have an edge. We build custom portfolios for institutional investors, family offices, and other investors, all in pursuit of outperformance and making a positive, real-world impact.</span>
+                    <span class="lang-zh" style="display:none;">我们专注于我们的关键优势，并继续在我们有优势的领域工作。我们为机构投资者、家族办公室和其他投资者构建定制投资组合，追求超额表现并产生积极的现实影响。</span>
+                </p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">70+</div>
-                <div class="stat-label">Markets</div>
+
+            <!-- Investment Cards -->
+            <div class="investment-cards">
+                <!-- Global Enhanced ETF Strategies -->
+                <div class="investment-card">
+                    <h3>
+                        <span class="lang-en">Global Enhanced ETF Strategies</span>
+                        <span class="lang-zh" style="display:none;">全球增强型ETF策略</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Over the years, we have developed enhanced index fund models that use multi-factor models to construct investment portfolios and machine learning for hedging. Results by these models have surpassed the index performance and are well accepted among institutional investors.</span>
+                        <span class="lang-zh" style="display:none;">多年来，我们开发了增强型指数基金模型，使用多因素模型构建投资组合，并使用机器学习进行对冲。这些模型的结果超越了指数表现，并在机构投资者中得到广泛认可。</span>
+                    </p>
+                    <p class="highlight">
+                        <span class="lang-en">Taking CSI 300 as an example, the actual performance of our index fund has been about 10% higher than the index each year since 2015.</span>
+                        <span class="lang-zh" style="display:none;">以沪深300为例，自2015年以来，我们的指数基金的实际表现每年都比指数高出约10%。</span>
+                    </p>
+                    <div class="index-icons">
+                        <span>S&P</span>
+                        <span>HANG SENG</span>
+                        <span>NIKKEI 225</span>
+                        <span>FTSE 100</span>
+                        <span>DAX</span>
+                        <span>CSI 300</span>
+                        <span>CAC40</span>
+                    </div>
+                </div>
+
+                <!-- Global Multi-Asset Systematic Investment Strategies -->
+                <div class="investment-card">
+                    <h3>
+                        <span class="lang-en">Global Multi-Asset Systematic Investment Strategies</span>
+                        <span class="lang-zh" style="display:none;">全球多资产系统化投资策略</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">In addition to having an in-house built advanced simulation and portfolio construction platform, which can simultaneously handle huge data sets, our edge comes from multi-source and multi-dimensional data architecture and data sets.</span>
+                        <span class="lang-zh" style="display:none;">除了拥有内部构建的先进模拟和投资组合构建平台（可同时处理庞大的数据集）外，我们的优势来自多源和多维数据架构和数据集。</span>
+                    </p>
+                    
+                    <div class="data-stats">
+                        <div class="stat-bubble">
+                            <span class="stat-value">700</span>
+                            <span class="stat-label lang-en">dataset</span>
+                            <span class="stat-label lang-zh" style="display:none;">数据集</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value">85</span>
+                            <span class="stat-label lang-en">exchanges</span>
+                            <span class="stat-label lang-zh" style="display:none;">交易所</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value">15000</span>
+                            <span class="stat-label lang-en">uncorrelated data field</span>
+                            <span class="stat-label lang-zh" style="display:none;">非相关数据字段</span>
+                        </div>
+                        <div class="stat-bubble">
+                            <span class="stat-value">1000</span>
+                            <span class="stat-label lang-en">Full level orderbook</span>
+                            <span class="stat-label lang-zh" style="display:none;">完整级别订单簿</span>
+                        </div>
+                    </div>
+
+                    <p class="highlight">
+                        <span class="lang-en">We applied statistical arbitrage strategies to crypto currency trading, and achieved a sharp ratio of 3.5-4.</span>
+                        <span class="lang-zh" style="display:none;">我们将统计套利策略应用于加密货币交易，实现了3.5-4的夏普比率。</span>
+                    </p>
+                </div>
+
+                <!-- Corporate Transformation Investment Opportunities -->
+                <div class="investment-card">
+                    <h3>
+                        <span class="lang-en">Corporate Transformation Investment Opportunities</span>
+                        <span class="lang-zh" style="display:none;">企业转型投资机会</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Our fund management company originated from the investment banking business of securities firms. Spin-offs of listed companies, rights offerings, privatizations, acquisitions, and mergers are all opportunities. Our advantage is that we can propose solutions and also provide funding to implement them.</span>
+                        <span class="lang-zh" style="display:none;">我们的基金管理公司起源于证券公司的投资银行业务。上市公司分拆、配股、私有化、收购和合并都是机会。我们的优势是我们可以提出解决方案，也可以提供资金来实施它们。</span>
+                    </p>
+                    <p class="highlight">
+                        <span class="lang-en">Since 2015, we have participated in and invested in 213 listed companies, achieving strong returns regardless of bull or bear market conditions.</span>
+                        <span class="lang-zh" style="display:none;">自2015年以来，我们已参与并投资了213家上市公司，无论牛市还是熊市都取得了强劲的回报。</span>
+                    </p>
+                </div>
+
+                <!-- Private Equity Investment Opportunities -->
+                <div class="investment-card">
+                    <h3>
+                        <span class="lang-en">Private Equity Investment Opportunities</span>
+                        <span class="lang-zh" style="display:none;">私募股权投资机会</span>
+                    </h3>
+                    <p>
+                        <span class="lang-en">Our edge lies in that we can source quality deals that other investors find difficult to get. Another edge we have is our active participation in corporate transformation investment opportunities. This bridges the gap between private equity and listed companies, allowing those shares in the private market to become tradable shares.</span>
+                        <span class="lang-zh" style="display:none;">我们的优势在于我们可以获得其他投资者难以获得的优质交易。我们的另一个优势是积极参与企业转型投资机会。这弥合了私募股权和上市公司之间的差距，使私人市场的股份成为可交易股份。</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">In addition to direct equity investments, we also invest in leading domestic private equity funds. We have already invested in 27 such funds, achieving strong results and establishing strong alliances with top-tier private equity managers.</span>
+                        <span class="lang-zh" style="display:none;">除了直接股权投资外，我们还投资于领先的国内私募股权基金。我们已经投资了27个这样的基金，取得了强劲的成果，并与顶级私募股权管理公司建立了牢固的联盟。</span>
+                    </p>
+                    
+                    <!-- Partner Logos Grid -->
+                    <div class="partner-grid">
+                        <!-- Placeholder for partner logos -->
+                    </div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">2B+</div>
-                <div class="stat-label">Transactions</div>
+        </div>
+    </section>
+
+    <!-- Bespoke Solutions Section -->
+    <section id="bespoke" class="section bespoke-section dark-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">Bespoke Solutions</span>
+                    <span class="lang-zh" style="display:none;">定制解决方案</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Each client is unique, and its requirements may go beyond simple passive investment returns. Fully leveraging our advantages in the capital markets, digital assets and the extensive network we have established, we provide customized solutions specifically for our clients.</span>
+                    <span class="lang-zh" style="display:none;">每个客户都是独特的，其要求可能超出简单的被动投资回报。充分利用我们在资本市场、数字资产和我们建立的广泛网络中的优势，我们为客户提供专门的定制解决方案。</span>
+                </p>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">90%</div>
-                <div class="stat-label">Global Coverage</div>
+
+            <h3 class="offering-title">
+                <span class="lang-en">OUR OFFERING</span>
+                <span class="lang-zh" style="display:none;">我们的服务</span>
+            </h3>
+
+            <div class="bespoke-cards">
+                <!-- Global Investor Program -->
+                <div class="bespoke-card">
+                    <h4>
+                        <span class="lang-en">Global Investor Program</span>
+                        <span class="lang-zh" style="display:none;">全球投资者计划</span>
+                    </h4>
+                    <p>
+                        <span class="lang-en">An exceptional programme, the Global Investor Program ("GIP"), offers a unique financial investment and immigration scheme in Singapore. This remarkable initiative extends the privilege of legal citizenship and/or residence rights to qualified applicants in exchange for a capital investment managed by Singapore companies.</span>
+                        <span class="lang-zh" style="display:none;">全球投资者计划（"GIP"）是一个特殊的计划，在新加坡提供独特的金融投资和移民计划。这一非凡的举措将合法公民身份和/或居留权的特权扩展到合格的申请人，以换取由新加坡公司管理的资本投资。</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">Tailored to the specific requirements of GIP, meticulously administered by Wealth Express, it seamlessly combines qualified investments with stable returns and dividends, and provides up to 80% of financing options.</span>
+                        <span class="lang-zh" style="display:none;">根据GIP的具体要求量身定制，由财富快线精心管理，它将合格投资与稳定的回报和股息无缝结合，并提供高达80%的融资选择。</span>
+                    </p>
+                </div>
+
+                <!-- Shareholder Value Maximization -->
+                <div class="bespoke-card">
+                    <h4>
+                        <span class="lang-en">Shareholder Value Maximization</span>
+                        <span class="lang-zh" style="display:none;">股东价值最大化</span>
+                    </h4>
+                    <p>
+                        <span class="lang-en">Our clients are almost all business owners, either listed or unlisted. Some clients are eager to increase the market value of their listed companies. Some clients may hold mining rights but are unsure how to monetize them. There are countless similar situations, and the core issue is to increase market value or monetize assets or businesses.</span>
+                        <span class="lang-zh" style="display:none;">我们的客户几乎都是企业主，无论是上市还是非上市。一些客户渴望增加其上市公司的市值。一些客户可能持有采矿权，但不确定如何将其货币化。有无数类似的情况，核心问题是增加市场价值或将资产或业务货币化。</span>
+                    </p>
+                </div>
+
+                <!-- Transferring Capital Across Borders -->
+                <div class="bespoke-card">
+                    <h4>
+                        <span class="lang-en">Transferring Capital Across Borders</span>
+                        <span class="lang-zh" style="display:none;">跨境资本转移</span>
+                    </h4>
+                    <p>
+                        <span class="lang-en">Capital in many countries cannot flow freely, and many countries have laws controlling capital inflows and outflows. Under the premise of legality and compliance, we leverage our scale advantages, our large trading volume in the capital markets, our partnerships with banks and other institutions, and special channels approved by the state (such as China's QDLP and QDII) to provide solutions for our clients.</span>
+                        <span class="lang-zh" style="display:none;">许多国家的资本不能自由流动，许多国家有控制资本流入和流出的法律。在合法合规的前提下，我们利用我们的规模优势、我们在资本市场的大量交易量、我们与银行和其他机构的合作关系，以及国家批准的特殊渠道（如中国的QDLP和QDII）为客户提供解决方案。</span>
+                    </p>
+                </div>
+
+                <!-- High-Conviction Co-Investment Opportunities -->
+                <div class="bespoke-card">
+                    <h4>
+                        <span class="lang-en">High-Conviction Co-Investment Opportunities</span>
+                        <span class="lang-zh" style="display:none;">高确信度联合投资机会</span>
+                    </h4>
+                    <p>
+                        <span class="lang-en">We have numerous opportunities for co-investment in private equity and restructuring and transformation of listed companies. We reserve certain opportunities for specific clients who prefer to make their own decisions and manage their own time. This arrangement strengthens our relationships with our clients.</span>
+                        <span class="lang-zh" style="display:none;">我们在私募股权和上市公司重组转型方面有众多联合投资机会。我们为特定客户保留某些机会，这些客户更愿意自己做决定并管理自己的时间。这种安排加强了我们与客户的关系。</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Clients Section -->
+    <section id="clients" class="section clients-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">Our Clients</span>
+                    <span class="lang-zh" style="display:none;">我们的客户</span>
+                </h2>
+                <p class="section-quote">
+                    <span class="lang-en">"Birds of a feather flock together"</span>
+                    <span class="lang-zh" style="display:none;">"物以类聚，人以群分"</span>
+                </p>
+            </div>
+
+            <div class="client-highlights">
+                <p>
+                    <span class="lang-en">We're proud to serve:</span>
+                    <span class="lang-zh" style="display:none;">我们自豪地服务于：</span>
+                </p>
+                <ul class="client-list">
+                    <li>
+                        <span class="lang-en">Long-standing ultra-high-net-worth families</span>
+                        <span class="lang-zh" style="display:none;">长期超高净值家族</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Sovereign wealth funds & institutional partners</span>
+                        <span class="lang-zh" style="display:none;">主权财富基金和机构合作伙伴</span>
+                    </li>
+                    <li>
+                        <span class="lang-en">Family offices & digital-native allocators</span>
+                        <span class="lang-zh" style="display:none;">家族办公室和数字原生配置者</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="client-stats">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">
+                        <span class="lang-en">Years of Trust</span>
+                        <span class="lang-zh" style="display:none;">信任年限</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$2B+</div>
+                    <div class="stat-label">
+                        <span class="lang-en">AUM under Management</span>
+                        <span class="lang-zh" style="display:none;">管理资产规模</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">
+                        <span class="lang-en">Exclusive Institutions</span>
+                        <span class="lang-zh" style="display:none;">独家机构</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="lang-en">Contact Us</span>
+                    <span class="lang-zh" style="display:none;">联系我们</span>
+                </h2>
+            </div>
+
+            <div class="contact-form-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-en">First Name</span>
+                                <span class="lang-zh" style="display:none;">名字</span>
+                            </label>
+                            <input type="text" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <span class="lang-en">Last Name</span>
+                                <span class="lang-zh" style="display:none;">姓氏</span>
+                            </label>
+                            <input type="text" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <span class="lang-en">Email</span>
+                            <span class="lang-zh" style="display:none;">电子邮件</span>
+                        </label>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="lang-en">Reason for contacting</span>
+                            <span class="lang-zh" style="display:none;">联系原因</span>
+                        </label>
+                        <select name="reason" required>
+                            <option value="">
+                                <span class="lang-en">Select a reason</span>
+                                <span class="lang-zh" style="display:none;">选择原因</span>
+                            </option>
+                            <option value="investment">
+                                <span class="lang-en">Investment Inquiry</span>
+                                <span class="lang-zh" style="display:none;">投资咨询</span>
+                            </option>
+                            <option value="partnership">
+                                <span class="lang-en">Partnership</span>
+                                <span class="lang-zh" style="display:none;">合作伙伴关系</span>
+                            </option>
+                            <option value="general">
+                                <span class="lang-en">General Inquiry</span>
+                                <span class="lang-zh" style="display:none;">一般咨询</span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="lang-en">Message</span>
+                            <span class="lang-zh" style="display:none;">留言</span>
+                        </label>
+                        <textarea name="message" rows="5" placeholder="Enter your message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span class="lang-en">Send Message</span>
+                        <span class="lang-zh" style="display:none;">发送消息</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-column">
-                <h4>Products</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Codapay</a></li>
-                    <li><a href="#">Custom Commerce</a></li>
-                    <li><a href="#">Distribution</a></li>
-                    <li><a href="#">Codashop</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Solutions</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Gaming</a></li>
-                    <li><a href="#">Digital Content</a></li>
-                    <li><a href="#">Streaming</a></li>
-                    <li><a href="#">E-commerce</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Resources</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">API Reference</a></li>
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
+        <div class="footer-content">
+            <div class="footer-logo">Wealth Express</div>
+            <p class="footer-copyright">
+                <span class="lang-en">© 2024 Wealth Express. All rights reserved.</span>
+                <span class="lang-zh" style="display:none;">© 2024 财富快线。保留所有权利。</span>
+            </p>
         </div>
     </footer>
 
-    <script>
-        // Canvas Animation - Floating Bubble/Sphere Effect
-        const canvas = document.getElementById('animatedCanvas');
-        const ctx = canvas.getContext('2d');
-
-        // Set canvas size
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Bubble class for animated spheres
-        class Bubble {
-            constructor() {
-                this.reset();
-                this.y = Math.random() * canvas.height;
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 100;
-                this.radius = Math.random() * 60 + 20;
-                this.speed = Math.random() * 2 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.1;
-                this.wobble = Math.random() * 2 - 1;
-                this.wobbleSpeed = Math.random() * 0.02 + 0.01;
-                this.time = 0;
-                this.color = Math.random() > 0.5 ? '#00ff88' : '#0088ff';
-            }
-
-            update() {
-                this.y -= this.speed;
-                this.x += Math.sin(this.time) * this.wobble;
-                this.time += this.wobbleSpeed;
-
-                // Reset bubble when it goes off screen
-                if (this.y < -100) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                // Create gradient for 3D effect
-                const gradient = ctx.createRadialGradient(
-                    this.x - this.radius * 0.3, 
-                    this.y - this.radius * 0.3, 
-                    0,
-                    this.x, 
-                    this.y, 
-                    this.radius
-                );
-
-                gradient.addColorStop(0, `${this.color}40`);
-                gradient.addColorStop(0.5, `${this.color}20`);
-                gradient.addColorStop(1, `${this.color}05`);
-
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Add highlight for glass effect
-                ctx.beginPath();
-                ctx.arc(
-                    this.x - this.radius * 0.3, 
-                    this.y - this.radius * 0.3, 
-                    this.radius * 0.3, 
-                    0, 
-                    Math.PI * 2
-                );
-                const highlightGradient = ctx.createRadialGradient(
-                    this.x - this.radius * 0.3, 
-                    this.y - this.radius * 0.3, 
-                    0,
-                    this.x - this.radius * 0.3, 
-                    this.y - this.radius * 0.3, 
-                    this.radius * 0.3
-                );
-                highlightGradient.addColorStop(0, `${this.color}60`);
-                highlightGradient.addColorStop(1, `${this.color}00`);
-                ctx.fillStyle = highlightGradient;
-                ctx.fill();
-
-                ctx.globalAlpha = 1;
-            }
-        }
-
-        // Create bubbles
-        const bubbles = [];
-        for (let i = 0; i < 15; i++) {
-            bubbles.push(new Bubble());
-        }
-
-        // Animation loop
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Update and draw bubbles
-            bubbles.forEach(bubble => {
-                bubble.update();
-                bubble.draw();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Interactive hover effect for product cards
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Tab navigation functionality
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const cards = document.querySelectorAll('.product-card');
-
-        tabButtons.forEach((btn, index) => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                tabButtons.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                // Scroll to corresponding card
-                if (cards[index]) {
-                    cards[index].scrollIntoView({ 
-                        behavior: 'smooth', 
-                        inline: 'center',
-                        block: 'nearest'
-                    });
-                }
-            });
-        });
-
-        // Parallax scrolling effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
