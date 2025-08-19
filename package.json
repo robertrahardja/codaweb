@@ -5,12 +5,19 @@
   "main": "index.html",
   "scripts": {
     "start": "npx live-server --port=8080",
-    "dev": "npx live-server --port=8080 --watch=*.html,*.css,*.js"
+    "dev": "npx live-server --port=8080 --watch=*.html,*.css,*.js",
+    "deploy": "wrangler pages deploy ./ --project-name=coda-web",
+    "preview": "wrangler pages dev ./ --port 3000"
   },
-  "keywords": ["coda", "website", "clone"],
+  "keywords": [
+    "coda",
+    "website",
+    "clone"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "wrangler": "^4.31.0"
   }
 }

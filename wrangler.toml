@@ -1,0 +1,6 @@
+name = "coda-web"
+compatibility_date = "2025-01-19"
+
+[site]
+bucket = "./"
+exclude = ["node_modules", "*.toml", "package*.json", ".git"]
