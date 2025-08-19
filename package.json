@@ -1,0 +1,16 @@
+{
+  "name": "coda-clone",
+  "version": "1.0.0",
+  "description": "A clone of Coda.co website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=8080",
+    "dev": "npx live-server --port=8080 --watch=*.html,*.css,*.js"
+  },
+  "keywords": ["coda", "website", "clone"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
