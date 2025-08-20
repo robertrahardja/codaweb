@@ -886,7 +886,7 @@ a {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10000;
+    z-index: 100001;
     position: relative;
 }
 
@@ -898,6 +898,16 @@ a {
     border-radius: 2px;
     transition: var(--transition-base);
     transform-origin: center;
+}
+
+.hamburger.active {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.hamburger.active span {
+    background: var(--primary-color);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -916,17 +926,19 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
     height: 100vh;
     background: var(--secondary-color);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    z-index: 9999;
+    z-index: 99999;
     pointer-events: none;
-    z-index: 9999;
     transition: opacity var(--transition-base);
+    overflow-y: auto;
 }
 
 .mobile-menu-overlay.active {
@@ -935,41 +947,21 @@ a {
 }
 
 .mobile-menu-content {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: var(--spacing-xl) var(--spacing-lg);
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
-.close-menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-base);
-    z-index: 10000;
-}
-
-.close-menu:hover {
-    background: transparent;
-    color: var(--primary-color);
-    transform: rotate(90deg);
-}
 
 .mobile-nav-menu {
     list-style: none;
